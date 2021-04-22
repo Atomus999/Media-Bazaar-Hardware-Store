@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hardware_App.DatabaseHelper">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAgFBAgABAAASAAACgJRCCACAAAAAAIAIAAAACAAAA=</HashCode>
+      <FileName>DatabaseHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="employeeManager" />
+      <Field Name="productManager" />
+      <Field Name="ticketManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Hardware_App.DayPlan">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACBAAAAgAAQBAAAEAAAAIAAAACAABAAABAQAAAQA=</HashCode>
+      <FileName>DayPlan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hardware_App.Employee">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAGQAgABlEAAAQAQQEEIUCgACAUgAAgEAAgA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="rfid" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="dayPlans" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hardware_App.EmployeeManager">
+    <Position X="7.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAQpgAAACAAAAAgICAAAAAAAAAEAAQIAAA=</HashCode>
+      <FileName>EmployeeManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="allEmployees" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hardware_App.Product">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADBAAABSBgAAQEYCAAAEQCAHABAABkAAiIJAAJjgQ=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="state" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Hardware_App.Product_Comparer" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Product_Comparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.53" Collapsed="true" />
+  </Class>
+  <Class Name="Hardware_App.Product_Manager">
+    <Position X="13" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAICAAAAAAAAAARACAAAAAAAAAAAAAhAAQARA=</HashCode>
+      <FileName>Product_Manager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Hardware_App.RFIDcontrol">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAEAIAAEAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RFIDcontrol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hardware_App.Ticket">
+    <Position X="5.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAkAAAAACAAAAAAAACAAIgAgAAIAgA=</HashCode>
+      <FileName>Ticket.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_product" />
+      <Field Name="CurrentState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Hardware_App.Ticket_Manager">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAEAgAMEAAAAAAAAAAAAAAAggAIAAAAAACAEAA=</HashCode>
+      <FileName>Ticket_Manager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="tickets" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="Hardware_App.ProductSortBy" Collapsed="true">
+    <Position X="7.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAEAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductSortBy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Hardware_App.ProductState">
+    <Position X="11.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ProductState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Hardware_App.state">
+    <Position X="2.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>state.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

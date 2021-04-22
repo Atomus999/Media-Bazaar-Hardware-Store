@@ -1,0 +1,9 @@
+#ID , Name, Department, Assigned FTE, Number of shifts, Number of day off, Actual worked shifts
+2,TomJon,Sales representative,0.2,2,0,2
+4,urukooo,Depot worker,1.1,11,0,11
+5,GodRod,Administration,1.1,11,0,11
+11,EvaldasDrąsutis,Special,0,0,2,-2
+22,KwangjinLee,Administration,0.4,4,0,4
+23,BopSrBoop,Depot worker,0.2,2,0,2
+55,johnLulu,Administration,0.1,1,0,1
+99,specialso,Special,0,0,0,0

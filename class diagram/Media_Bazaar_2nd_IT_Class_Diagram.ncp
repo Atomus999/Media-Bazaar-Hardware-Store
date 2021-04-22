@@ -1,0 +1,1007 @@
+<Project>
+  <Name>Media-bazaar2nIt</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Hardware_App.exe</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>DatatableEmployee</Name>
+        <Access>Public</Access>
+        <Location left="1491" top="3252" />
+        <Size width="815" height="349" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String firstName</Member>
+        <Member type="Field">private String lastName</Member>
+        <Member type="Field">private String department</Member>
+        <Member type="Field">private String address</Member>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private RFIDcontrol rfid</Member>
+        <Member type="Field">private Double fteContract</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String FirstName { get; set; }</Member>
+        <Member type="Property">public String LastName { get; set; }</Member>
+        <Member type="Property">public String Department { get; set; }</Member>
+        <Member type="Property">public String Address { get; set; }</Member>
+        <Member type="Property">public Double FteContract { get; set; }</Member>
+        <Member type="Property">public RFIDcontrol Rfid { get; set; }</Member>
+        <Member type="Property">public Boolean IsActive { get; set; }</Member>
+        <Member type="Constructor">public DatatableEmployee(Int32 id, String firstname, String lastname, String department, String address, Boolean isActive, Double contractFTE, RFIDcontrol rfid)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Department</Name>
+        <Access>Public</Access>
+        <Location left="2135" top="4390" />
+        <Size width="438" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Property">public ShiftPerDept ShiftPerDept { get; set; }</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public Double FTE { get; set; }</Member>
+        <Member type="Property">public Boolean ShowFTE { get; set; }</Member>
+        <Member type="Constructor">public Department(String name)</Member>
+        <Member type="Constructor">public Department(String name, Double fte)</Member>
+        <Member type="Constructor">public Department(Int32 id, String name, Double fte)</Member>
+        <Member type="Method">public Double calculateWeeklyFte(DateTime dateCalendar, List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Boolean DatesAreInTheSameWeek(DateTime date1, DateTime date2)</Member>
+        <Member type="Method">public Int32 trackEmployees(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DepartmentManager</Name>
+        <Access>Public</Access>
+        <Location left="2201" top="5054" />
+        <Size width="413" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static DepartmentManager instance</Member>
+        <Member type="Property">public DatabaseHelperDepartment dataHelperDepartment { get; set; }</Member>
+        <Member type="Property">public List&lt;Department&gt; Departments { get; set; }</Member>
+        <Member type="Constructor">public DepartmentManager()</Member>
+        <Member type="Method">public static DepartmentManager GetInstance()</Member>
+        <Member type="Method">public Department GetDepartmentById(Int32 id)</Member>
+        <Member type="Method">public Void LoadDepReqEmp()</Member>
+        <Member type="Method">public Void AddDepartment(Department department)</Member>
+        <Member type="Method">public Void LoadDepartments()</Member>
+        <Member type="Method">public Void UpdateDepartment()</Member>
+        <Member type="Method">public Void resetShiftDays()</Member>
+        <Member type="Method">public List&lt;DatatableDepartment&gt; GetDepartmentsDatatable()</Member>
+        <Member type="Method">public List&lt;Department&gt; GetAllDepartments()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FteReal</Name>
+        <Access>Public</Access>
+        <Location left="304" top="4180" />
+        <Size width="337" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Double actualFte</Member>
+        <Member type="Property">public Int32 EmpId { get; set; }</Member>
+        <Member type="Property">public DateTime Date { get; set; }</Member>
+        <Member type="Property">public Double ActualFte { get; set; }</Member>
+        <Member type="Constructor">public FteReal(Int32 empid, DateTime dateTime, Double fte)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ScheduleDays</Name>
+        <Access>Public</Access>
+        <Location left="1883" top="4119" />
+        <Size width="262" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Boolean Monday { get; set; }</Member>
+        <Member type="Property">public Boolean Tuesday { get; set; }</Member>
+        <Member type="Property">public Boolean Wednesday { get; set; }</Member>
+        <Member type="Property">public Boolean Thursday { get; set; }</Member>
+        <Member type="Property">public Boolean Friday { get; set; }</Member>
+        <Member type="Property">public Boolean Saturday { get; set; }</Member>
+        <Member type="Property">public Boolean Sunday { get; set; }</Member>
+        <Member type="Constructor">public ScheduleDays()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ShiftPerDept</Name>
+        <Access>Public</Access>
+        <Location left="1773" top="3715" />
+        <Size width="502" height="366" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public List&lt;Int32&gt; RequiredMondayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredTuesdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredWednesdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredThursdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredFridayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredSaturdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; RequiredSundayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledMondayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledTuesdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledWednesdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledThursdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledFridayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledSaturdayEmp { get; set; }</Member>
+        <Member type="Property">public List&lt;Int32&gt; FilledSundayEmp { get; set; }</Member>
+        <Member type="Constructor">public ShiftPerDept()</Member>
+        <Member type="Constructor">public ShiftPerDept(Int32 ReqEmpMonMor, Int32 ReqEmpMonAft, Int32 ReqEmpMonEve, Int32 ReqEmpTueMor, Int32 ReqEmpTueAft, Int32 ReqEmpTueEve, Int32 ReqEmpWedMor, Int32 ReqEmpWedAft, Int32 ReqEmpWedEve, Int32 ReqEmpThuMor, Int32 ReqEmpThuAft, Int32 ReqEmpThuEve, Int32 ReqEmpFriMor, Int32 ReqEmpFriAft, Int32 ReqEmpFriEve, Int32 ReqEmpSatMor, Int32 ReqEmpSatAft, Int32 ReqEmpSatEve, Int32 ReqEmpSunMor, Int32 ReqEmpSunAft, Int32 ReqEmpSunEve)</Member>
+        <Member type="Method">public Void resetFilledDays()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Spouse</Name>
+        <Access>Public</Access>
+        <Location left="716" top="4180" />
+        <Size width="430" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 empID</Member>
+        <Member type="Field">private String firstName</Member>
+        <Member type="Field">private String lastName</Member>
+        <Member type="Field">private String phoneNumber</Member>
+        <Member type="Property">public Int32 EmpID { get; set; }</Member>
+        <Member type="Property">public String FirstName { get; set; }</Member>
+        <Member type="Property">public String LastName { get; set; }</Member>
+        <Member type="Property">public String PhoneNumber { get; set; }</Member>
+        <Member type="Constructor">public Spouse(Int32 empid, String firstname, String lastname, String phonenumber)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DayPlan</Name>
+        <Access>Public</Access>
+        <Location left="692" top="3338" />
+        <Size width="371" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private DateTime date</Member>
+        <Member type="Field">private Int32 empID</Member>
+        <Member type="Field">private Int32 morning</Member>
+        <Member type="Field">private Int32 afternoon</Member>
+        <Member type="Field">private Int32 evening</Member>
+        <Member type="Field">private Int32 minsLate</Member>
+        <Member type="Property">public Int32 EmpID { get; set; }</Member>
+        <Member type="Property">public DateTime Date { get; set; }</Member>
+        <Member type="Property">public Int32 Morning { get; set; }</Member>
+        <Member type="Property">public Int32 Afternoon { get; set; }</Member>
+        <Member type="Property">public Int32 Evening { get; set; }</Member>
+        <Member type="Property">public Int32 MinsLate { get; set; }</Member>
+        <Member type="Constructor">public DayPlan(DateTime date, Int32 empid, Int32 morning, Int32 afternoon, Int32 evening)</Member>
+        <Member type="Method">public Int32 GetMonth()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseHelperEmployee</Name>
+        <Access>Public</Access>
+        <Location left="1815" top="5511" />
+        <Size width="373" height="383" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MySqlConnection connection</Member>
+        <Member type="Constructor">public DatabaseHelperEmployee()</Member>
+        <Member type="Method">public Int32 UpdateWorkingDays(Employee employee)</Member>
+        <Member type="Method">public Void loadWorkingDays(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 saveWorkingDay(Employee employee)</Member>
+        <Member type="Method">public Void loadFtes(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 AddFTE(FteReal fte)</Member>
+        <Member type="Method">public Int32 SaveMinsLate(Employee employee, Int32 minutesLate)</Member>
+        <Member type="Method">public Void loadMinsLate(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 RemoveFte(DateTime date, Int32 id)</Member>
+        <Member type="Method">public Int32 RemoveSchedule(DateTime date, DayPlan dayPlan)</Member>
+        <Member type="Method">public Void loadSchedules(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 AddPlan(DayPlan dayPlan)</Member>
+        <Member type="Method">public Int32 UpdateEmployee(Employee employee)</Member>
+        <Member type="Method">public List&lt;Employee&gt; loadEmployees(List&lt;Spouse&gt; spouses)</Member>
+        <Member type="Method">public Int32 addEmployee(Employee employee)</Member>
+        <Member type="Method">public List&lt;EmployeeAbsence&gt; loadAbsences(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 updateAbsences(EmployeeAbsence absence)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseHelperProduct</Name>
+        <Access>Public</Access>
+        <Location left="2686" top="5511" />
+        <Size width="398" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MySqlConnection connection</Member>
+        <Member type="Constructor">public DatabaseHelperProduct()</Member>
+        <Member type="Method">public Int32 UpdateProduct(Product p)</Member>
+        <Member type="Method">public Int32 AddProduct(Product product)</Member>
+        <Member type="Method">public List&lt;Product&gt; loadProducts(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Int32 RemoveProduct(Product p)</Member>
+        <Member type="Method">public Void assignId()</Member>
+        <Member type="Method">private Employee ReturnEmployeeFromId(Int32 id, List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">private ProductState ConvertStringToState(String s)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseHelperSpouse</Name>
+        <Access>Public</Access>
+        <Location left="1467" top="5511" />
+        <Size width="259" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MySqlConnection connection</Member>
+        <Member type="Constructor">public DatabaseHelperSpouse()</Member>
+        <Member type="Method">public List&lt;Spouse&gt; LoadSpouses()</Member>
+        <Member type="Method">public Int32 AddSpouse(Spouse spouse)</Member>
+        <Member type="Method">public Int32 UpdateSpouse(Spouse spouse)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseHelperTicket</Name>
+        <Access>Public</Access>
+        <Location left="3221" top="5511" />
+        <Size width="292" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MySqlConnection connection</Member>
+        <Member type="Constructor">public DatabaseHelperTicket()</Member>
+        <Member type="Method">public Void assignId()</Member>
+        <Member type="Method">public Int32 AddTicket(Ticket ticket)</Member>
+        <Member type="Method">public Int32 updateTicket(Ticket ticket)</Member>
+        <Member type="Method">public List&lt;Ticket&gt; loadTickets(List&lt;Product&gt; products)</Member>
+        <Member type="Method">private state returnStateType(String curState)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatatableDepartment</Name>
+        <Access>Public</Access>
+        <Location left="2366" top="3390" />
+        <Size width="325" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private Double fte</Member>
+        <Member type="Property">public Int32 ID { get; set; }</Member>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public Double FTE { get; set; }</Member>
+        <Member type="Constructor">public DatatableDepartment(Int32 id, String name, Double fte)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataTableModelProduct</Name>
+        <Access>Public</Access>
+        <Location left="2825" top="3371" />
+        <Size width="529" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private Int32 qtyWh</Member>
+        <Member type="Field">private ProductState state</Member>
+        <Member type="Field">private String barcode</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public Int32 QuantityWarehouse { get; set; }</Member>
+        <Member type="Property">public ProductState State { get; set; }</Member>
+        <Member type="Property">public String Barcode { get; set; }</Member>
+        <Member type="Constructor">public DataTableModelProduct(Int32 id, String name, Int32 qtyWh, ProductState state, String barcode)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataTableModelTicket</Name>
+        <Access>Public</Access>
+        <Location left="4105" top="3787" />
+        <Size width="362" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private Int32 quantity</Member>
+        <Member type="Field">private String productBarcode</Member>
+        <Member type="Field">private state state</Member>
+        <Member type="Field">private DateTime ticketDate</Member>
+        <Member type="Field">private String productName</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String ProductName { get; set; }</Member>
+        <Member type="Property">public String ProductBarcode { get; set; }</Member>
+        <Member type="Property">public Int32 Quantity { get; set; }</Member>
+        <Member type="Property">public state CurrentState { get; set; }</Member>
+        <Member type="Property">public DateTime TicketDate { get; set; }</Member>
+        <Member type="Constructor">public DataTableModelTicket(Int32 id, Int32 quantity, String productBarcode, state state, DateTime ticketDate, String productName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BarcodeException</Name>
+        <Access>Internal</Access>
+        <Location left="3550" top="4466" />
+        <Size width="368" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public BarcodeException()</Member>
+        <Member type="Constructor">public BarcodeException(String message)</Member>
+        <Member type="Constructor">public BarcodeException(String message, Exception innerException)</Member>
+        <Member type="Constructor">protected BarcodeException(SerializationInfo info, StreamingContext context)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Employee</Name>
+        <Access>Public</Access>
+        <Location left="1193" top="3715" />
+        <Size width="541" height="927" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private String firstName</Member>
+        <Member type="Field">private String lastName</Member>
+        <Member type="Field">private String department</Member>
+        <Member type="Field">private DateTime dateOfBirth</Member>
+        <Member type="Field">private Double bsn</Member>
+        <Member type="Field">private String phoneNumber</Member>
+        <Member type="Field">private String address</Member>
+        <Member type="Field">private String email</Member>
+        <Member type="Field">private String userName</Member>
+        <Member type="Field">private String password</Member>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private RFIDcontrol rfid</Member>
+        <Member type="Field">private Double fteContract</Member>
+        <Member type="Field">private Spouse spouse</Member>
+        <Member type="Property">public ScheduleDays ScheduleDays { get; set; }</Member>
+        <Member type="Property">public List&lt;FteReal&gt; ActualFtes { get; set; }</Member>
+        <Member type="Property">public Boolean IsActive { get; set; }</Member>
+        <Member type="Property">public Spouse SetSpouse { get; set; }</Member>
+        <Member type="Property">public RFIDcontrol Rfid { get; set; }</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String FirstName { get; set; }</Member>
+        <Member type="Property">public String LastName { get; set; }</Member>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public String UserName { get; set; }</Member>
+        <Member type="Property">public String Password { get; set; }</Member>
+        <Member type="Property">public String Department { get; set; }</Member>
+        <Member type="Property">public DateTime DateOfBirth { get; set; }</Member>
+        <Member type="Property">public Double Bsn { get; set; }</Member>
+        <Member type="Property">public Double FteContract { get; set; }</Member>
+        <Member type="Property">public String PhoneNumber { get; set; }</Member>
+        <Member type="Property">public String Address { get; set; }</Member>
+        <Member type="Property">public String Email { get; set; }</Member>
+        <Member type="Constructor">public Employee(Int32 id, String firstname, String lastname, String department, DateTime dateofbirth, Double bsn, String phonenumber, String address, String email, String username, String password, Double fte)</Member>
+        <Member type="Constructor">public Employee(Int32 id, String firstname, String lastname, String department, DateTime dateofbirth, Double bsn, String phonenumber, String address, String email, String username, String password, RFIDcontrol rfid, Boolean isActive, Double contractFTE)</Member>
+        <Member type="Constructor">public Employee(Int32 id, String firstname, String lastname, String department, DateTime dateofbirth, Double bsn, String phonenumber, String address, String email, String username, String password, RFIDcontrol rfid, Boolean isActive, Double contractFTE, Spouse spouse)</Member>
+        <Member type="Method">private Boolean DatesAreInTheSameWeek(DateTime date1, DateTime date2)</Member>
+        <Member type="Method">public Double WeeklyActualFTE(DateTime dateCalendar)</Member>
+        <Member type="Method">public Void addActualFte(FteReal fteReal)</Member>
+        <Member type="Method">public Void removeActualFte(Int32 empid, DateTime dateTime)</Member>
+        <Member type="Method">public Void addDayplan(DayPlan dayplan)</Member>
+        <Member type="Method">public Void removeDayplan(DayPlan dayplan)</Member>
+        <Member type="Method">public Void deteleDayPlans()</Member>
+        <Member type="Method">public List&lt;DayPlan&gt; GetDayPlans()</Member>
+        <Member type="Method">public Void GetNewRfid()</Member>
+        <Member type="Method">public List&lt;DayPlan&gt; GetDayPlansByDate(DateTime date)</Member>
+        <Member type="Method">public String EmployeeInformation()</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EmployeeManager</Name>
+        <Access>Public</Access>
+        <Location left="1561" top="4733" />
+        <Size width="414" height="638" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static EmployeeManager instance</Member>
+        <Member type="Property">public DatabaseHelperEmployee dataHelperEmployee { get; set; }</Member>
+        <Member type="Property">public DatabaseHelperSpouse dataHelperSpouse { get; set; }</Member>
+        <Member type="Property">public EmployeeManager employeeManager { get; set; }</Member>
+        <Member type="Constructor">public EmployeeManager()</Member>
+        <Member type="Method">public static EmployeeManager GetInstance()</Member>
+        <Member type="Method">public Void loadAbsences()</Member>
+        <Member type="Method">public List&lt;Spouse&gt; GetSpouses()</Member>
+        <Member type="Method">public Void loadSpouses()</Member>
+        <Member type="Method">public Void loadWorkingDays()</Member>
+        <Member type="Method">public Void loadFtes()</Member>
+        <Member type="Method">public Void loadMinsLate()</Member>
+        <Member type="Method">public Void loadSchedules()</Member>
+        <Member type="Method">public Void loadEmployees()</Member>
+        <Member type="Method">public List&lt;Employee&gt; GetEmployees()</Member>
+        <Member type="Method">public Employee GetEmployeeByRFID(RFIDcontrol RFID)</Member>
+        <Member type="Method">public Void AddEmployee(Employee employee)</Member>
+        <Member type="Method">public Void DeleteAllEmployees()</Member>
+        <Member type="Method">public Void DeleteAllDayplans()</Member>
+        <Member type="Method">public Void AddRFID(RFIDcontrol rfid)</Member>
+        <Member type="Method">public RFIDcontrol GetRFIDcontrolBySerial(String serial)</Member>
+        <Member type="Method">public List&lt;RFIDcontrol&gt; GetRFIDcontrols()</Member>
+        <Member type="Method">public List&lt;Employee&gt; GetEmployeesByDepartment(String dep)</Member>
+        <Member type="Method">public List&lt;DatatableEmployee&gt; GetEmployeesDatatable()</Member>
+        <Member type="Method">public List&lt;DatatableEmployee&gt; GetEmployeesDatatableByID(Int32 id)</Member>
+        <Member type="Method">public List&lt;DatatableEmployee&gt; GetEmployeesDatatableByName(String name)</Member>
+        <Member type="Method">public Void UpdateEmployeeAbsence(EmployeeAbsence absence)</Member>
+        <Member type="Method">public List&lt;EmployeeAbsence&gt; GetEmployeeAbsences()</Member>
+        <Member type="Method">public EmployeeAbsence returnEmployeeAbsenceById(Int32 id)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EmployeeAbsence</Name>
+        <Access>Public</Access>
+        <Location left="469" top="3715" />
+        <Size width="682" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private Int32 empId</Member>
+        <Member type="Field">private DateTime date</Member>
+        <Member type="Field">private String absenceReason</Member>
+        <Member type="Field">private String absenceDescription</Member>
+        <Member type="Field">private String ticketStatus</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public Int32 EmpId { get; set; }</Member>
+        <Member type="Property">public String EmployeeName { get; set; }</Member>
+        <Member type="Property">public DateTime Date { get; set; }</Member>
+        <Member type="Property">public String AbsenceReason { get; set; }</Member>
+        <Member type="Property">public String AbsenceDescription { get; set; }</Member>
+        <Member type="Property">public String TicketStatus { get; set; }</Member>
+        <Member type="Constructor">public EmployeeAbsence(Int32 id, Int32 empId, DateTime date, String absenceReason, String absenceDescription, String ticketStatus)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PhoneNumberException</Name>
+        <Access>Internal</Access>
+        <Location left="1080" top="3010" />
+        <Size width="391" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public PhoneNumberException()</Member>
+        <Member type="Constructor">public PhoneNumberException(String message)</Member>
+        <Member type="Constructor">public PhoneNumberException(String message, Exception innerException)</Member>
+        <Member type="Constructor">protected PhoneNumberException(SerializationInfo info, StreamingContext context)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Product</Name>
+        <Access>Public</Access>
+        <Location left="2794" top="3878" />
+        <Size width="505" height="791" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private String model</Member>
+        <Member type="Field">private String brandName</Member>
+        <Member type="Field">private Single price</Member>
+        <Member type="Field">private String description</Member>
+        <Member type="Field">private Double weight</Member>
+        <Member type="Field">private Double height</Member>
+        <Member type="Field">private Double width</Member>
+        <Member type="Field">private Double depth</Member>
+        <Member type="Field">private String category</Member>
+        <Member type="Field">private Int32 aisleNumber</Member>
+        <Member type="Field">private Int32 qtyWh</Member>
+        <Member type="Field">private Int32 qtySh</Member>
+        <Member type="Field">private DateTime shipmentDate</Member>
+        <Member type="Field">private Employee registeredEmp</Member>
+        <Member type="Field">private ProductState state</Member>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private String barcode</Member>
+        <Member type="Field">public static Int32 idHelper</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public String GetDepotInfo { get; }</Member>
+        <Member type="Property">public String GetSalesInfo { get; }</Member>
+        <Member type="Property">public String BrandName { get; set; }</Member>
+        <Member type="Property">public String Model { get; set; }</Member>
+        <Member type="Property">public Single Price { get; set; }</Member>
+        <Member type="Property">public String Description { get; set; }</Member>
+        <Member type="Property">public Double Weight { get; set; }</Member>
+        <Member type="Property">public Double Height { get; set; }</Member>
+        <Member type="Property">public Double Width { get; set; }</Member>
+        <Member type="Property">public Double Depth { get; set; }</Member>
+        <Member type="Property">public String Category { get; set; }</Member>
+        <Member type="Property">public Int32 AisleNumber { get; set; }</Member>
+        <Member type="Property">public Int32 QuantityWarehouse { get; set; }</Member>
+        <Member type="Property">public Int32 QuantityShelf { get; set; }</Member>
+        <Member type="Property">public DateTime ShipmentDate { get; set; }</Member>
+        <Member type="Property">public Employee RegisteredEmployee { get; set; }</Member>
+        <Member type="Property">public ProductState State { get; set; }</Member>
+        <Member type="Property">public String Barcode { get; set; }</Member>
+        <Member type="Constructor">public Product(Int32 id, String model, String brandName, Single price, String description, Double weight, Double height, Double width, Double depth, String category, Int32 aisleNumber, Int32 qtyWh, Int32 qtySh, DateTime shipmentDate, Employee registeredEmp, ProductState state, String name, String barcode)</Member>
+        <Member type="Constructor">public Product(String model, String brandName, Single price, String description, Double weight, Double height, Double width, Double depth, String category, Int32 aisleNumber, Int32 qtyWh, Int32 qtySh, DateTime shipmentDate, Employee registeredEmp, ProductState state, String name, String barcode)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Product_Comparer</Name>
+        <Access>Public</Access>
+        <Location left="3679" top="3863" />
+        <Size width="234" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public ProductSortBy compareByFields</Member>
+        <Member type="Constructor">public Product_Comparer()</Member>
+        <Member type="Method">public Int32 Compare(Product x, Product y)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Product_Manager</Name>
+        <Access>Public</Access>
+        <Location left="2668" top="4989" />
+        <Size width="712" height="366" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public DatabaseHelperProduct dataHelperProduct { get; set; }</Member>
+        <Member type="Constructor">public Product_Manager()</Member>
+        <Member type="Method">public Void loadProducts(List&lt;Employee&gt; employees)</Member>
+        <Member type="Method">public Void AddProduct(Product selectedProduct)</Member>
+        <Member type="Method">public Void RemoveProductById(Int32 id)</Member>
+        <Member type="Method">public Void DeactivateProduct(Product p)</Member>
+        <Member type="Method">public Product GetProductById(Int32 id)</Member>
+        <Member type="Method">public List&lt;Product&gt; GetProductList()</Member>
+        <Member type="Method">public Void SortProductsBy(ProductSortBy productSort)</Member>
+        <Member type="Method">public Void RemoveAllProducts()</Member>
+        <Member type="Method">public ProductState ConvertStringToState(String s)</Member>
+        <Member type="Method">public Boolean ValidateID(Int32 id)</Member>
+        <Member type="Method">public Void UpdateProduct(Int32 id, String model, String brandName, Single price, String description, Double weight, Double height, Double width, Double depth, String category, Int32 aisleNumber, Int32 qtyWh, Int32 qtySh, DateTime shipmentDate, Employee registeredEmp, ProductState state, String name, String barcode)</Member>
+        <Member type="Method">public List&lt;DataTableModelProduct&gt; GetProductsDataTable()</Member>
+        <Member type="Method">public Product GetProductByBarcode(String barcode)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>RFIDcontrol</Name>
+        <Access>Public</Access>
+        <Location left="1789" top="4420" />
+        <Size width="258" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Boolean isAssigned</Member>
+        <Member type="Field">private String serialNumber</Member>
+        <Member type="Property">public Boolean IsAssigned { get; set; }</Member>
+        <Member type="Property">public String SerialNumber { get; set; }</Member>
+        <Member type="Constructor">public RFIDcontrol(String serial, Boolean isAssigned)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Ticket</Name>
+        <Access>Public</Access>
+        <Location left="4042" top="4340" />
+        <Size width="398" height="355" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Product _product</Member>
+        <Member type="Field">private Int32 quantity</Member>
+        <Member type="Field">private Int32 id</Member>
+        <Member type="Field">private Boolean isActive</Member>
+        <Member type="Field">public state CurrentState</Member>
+        <Member type="Field">public static Int32 startIdHelper</Member>
+        <Member type="Property">public Int32 Id { get; set; }</Member>
+        <Member type="Property">public Product product { get; set; }</Member>
+        <Member type="Property">public Int32 Quantity { get; set; }</Member>
+        <Member type="Property">public DateTime TicketDate { get; set; }</Member>
+        <Member type="Property">public Boolean IsActive { get; set; }</Member>
+        <Member type="Constructor">public Ticket(Product product, Int32 quantity)</Member>
+        <Member type="Constructor">public Ticket(Int32 id, DateTime time, Product _product, Int32 Quantity, state State, Boolean isActive)</Member>
+        <Member type="Constructor">public Ticket(DateTime time, Product _product, Int32 Quantity, state State, Boolean isActive)</Member>
+        <Member type="Constructor">static Ticket()</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Ticket_Manager</Name>
+        <Access>Public</Access>
+        <Location left="3918" top="5061" />
+        <Size width="333" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public DatabaseHelperTicket dataHelperTicket { get; set; }</Member>
+        <Member type="Constructor">public Ticket_Manager()</Member>
+        <Member type="Method">public Void loadTickets(List&lt;Product&gt; products)</Member>
+        <Member type="Method">public Void ClearTickets()</Member>
+        <Member type="Method">public List&lt;Ticket&gt; getAllTickets()</Member>
+        <Member type="Method">public Ticket returnTicketById(Int32 id)</Member>
+        <Member type="Method">public Void AddTicket(Ticket ticket)</Member>
+        <Member type="Method">public List&lt;Ticket&gt; ReturnAllTickets()</Member>
+        <Member type="Method">public List&lt;DataTableModelTicket&gt; GetActiveTicketsDataTable()</Member>
+        <Member type="Method">public List&lt;DataTableModelTicket&gt; GetInactiveTicketsDataTable()</Member>
+        <Member type="Method">public Void UpdateTicket(Ticket t)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DepotStatisticsManager</Name>
+        <Access>Public</Access>
+        <Location left="3526" top="4766" />
+        <Size width="402" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Product_Manager productManager { get; set; }</Member>
+        <Member type="Property">public Ticket_Manager ticketManager { get; set; }</Member>
+        <Member type="Constructor">public DepotStatisticsManager()</Member>
+        <Member type="Method">public Double calculateTurnover(Product product)</Member>
+        <Member type="Method">public List&lt;Product&gt; selectedCategoryProducts(String category)</Member>
+        <Member type="Method">public Product getPersonById(Int32 id)</Member>
+        <Member type="Method">public Void displayGraph()</Member>
+        <Member type="Method">public Int32 numberOfProducts()</Member>
+        <Member type="Method">public Int32 numberOfUnavailableProducts()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ProductSortBy</Name>
+        <Access>Public</Access>
+        <Location left="3732" top="4165" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>Id = 0</Value>
+        <Value>Name = 1</Value>
+        <Value>stockQty = 2</Value>
+        <Value>shelfQty = 3</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ProductState</Name>
+        <Access>Public</Access>
+        <Location left="3546" top="3477" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>UNAVAILABLE = 0</Value>
+        <Value>AVAILABLE = 1</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ProductCategory</Name>
+        <Access>Public</Access>
+        <Location left="3439" top="3878" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>Domestic_Appliances = 0</Value>
+        <Value>Mobile_Phones = 1</Value>
+        <Value>Laptops = 2</Value>
+        <Value>Computers = 3</Value>
+        <Value>Televisions = 4</Value>
+        <Value>Audio_Equipment = 5</Value>
+        <Value>Accessories = 6</Value>
+        <Value>Smart_Home_Appliances = 7</Value>
+        <Value>Lightning = 8</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>state</Name>
+        <Access>Public</Access>
+        <Location left="4561" top="4084" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>Pending = 0</Value>
+        <Value>Arriving = 1</Value>
+        <Value>Accepted = 2</Value>
+        <Value>Rejected = 3</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseHelperDepartment</Name>
+        <Access>Public</Access>
+        <Location left="2276" top="5547" />
+        <Size width="294" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MySqlConnection connection</Member>
+        <Member type="Constructor">public DatabaseHelperDepartment()</Member>
+        <Member type="Method">public ShiftPerDept LoadDepartmentReqEmp(Int32 depid)</Member>
+        <Member type="Method">public List&lt;Department&gt; LoadDepartments()</Member>
+        <Member type="Method">public Int32 AddDepartment(Department department)</Member>
+        <Member type="Method">public Int32 UpdateDepartment(Department department)</Member>
+        <Member type="Method">public Int32 RemoveDepartment(Department department)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>&lt;&lt; throws &gt;&gt;</Text>
+        <Location left="1331" top="3417" />
+        <Size width="96" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>&lt;&lt; throws &gt;&gt;</Text>
+        <Location left="3376" top="4517" />
+        <Size width="96" height="50" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="23">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2335</X>
+          <Y>3534</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1915</X>
+          <Y>4357</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>rfid</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="23">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1534</X>
+          <Y>4682</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1872</X>
+          <Y>4661</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>-rfid</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1225</X>
+          <Y>4667</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>992</X>
+          <Y>4458</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>spouse</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="20" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2958</X>
+          <Y>4717</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- registeredEmp</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="24" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- _product</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="21" second="27">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="17" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1644</X>
+          <Y>5396</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="31">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="16">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1340</X>
+          <Y>5021</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- allEmployees</EndRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>865</X>
+          <Y>5021</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole> spouses</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="23">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2016</X>
+          <Y>4890</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2016</X>
+          <Y>4664</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>rFIDcontrols</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- departments</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="18">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>51</X>
+          <Y>5022</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>368</X>
+          <Y>3880</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- employeeAbsences</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="7">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1235</X>
+          <Y>3690</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole> - dayPlans</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1250</X>
+          <Y>4875</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>443</X>
+          <Y>4450</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>+ actualFtes</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2215</X>
+          <Y>4140</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>+ ShiftPerDept</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="16" second="19">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="16" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1836</X>
+          <Y>4285</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>+ ScheduleDays</EndRole>
+      </Relationship>
+      <Relationship type="Dependency" first="20" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="22" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>1</EndRole>
+      </Relationship>
+      <Relationship type="Association" first="22" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3143</X>
+          <Y>4694</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>-  products</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="22" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2724</X>
+          <Y>4946</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2783</X>
+          <Y>3541</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>-  productsTable</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="13" second="28">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="20" second="28">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="26" second="22">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3741</X>
+          <Y>5093</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="26" second="25">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3743</X>
+          <Y>5092</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3885</X>
+          <Y>5092</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="25" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>1</EndRole>
+      </Relationship>
+      <Relationship type="Association" first="25" second="24">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4363</X>
+          <Y>4798</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>- tickets</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="14" second="30">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4635</X>
+          <Y>3951</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="24" second="30">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4631</X>
+          <Y>4502</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
