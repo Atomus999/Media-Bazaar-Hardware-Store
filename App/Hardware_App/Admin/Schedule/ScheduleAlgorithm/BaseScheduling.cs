@@ -19,24 +19,24 @@ namespace Hardware_App.Admin.Schedule.ScheduleAlgorithm
         }
         public BaseScheduling() { }
 
-        private int ChooseShift(int j,Department department)
+        private int ChooseShift(int j, Department department)
         {
-            int lowest=-1;
+            int lowest = -1;
             int fillShiftMorning = department.ShiftPerDept.FilledEmployees.AllDays[j].Morning;
-            int fillShiftAfternoon= department.ShiftPerDept.FilledEmployees.AllDays[j].Afternoon;
+            int fillShiftAfternoon = department.ShiftPerDept.FilledEmployees.AllDays[j].Afternoon;
             int fillShiftEvening = department.ShiftPerDept.FilledEmployees.AllDays[j].Evening;
 
-            int reqShiftMorning= department.ShiftPerDept.RequiredEmployees.AllDays[j].Morning;
-            int reqShiftAfternoon= department.ShiftPerDept.RequiredEmployees.AllDays[j].Afternoon;
-            int reqShiftEvening= department.ShiftPerDept.RequiredEmployees.AllDays[j].Evening;
+            int reqShiftMorning = department.ShiftPerDept.RequiredEmployees.AllDays[j].Morning;
+            int reqShiftAfternoon = department.ShiftPerDept.RequiredEmployees.AllDays[j].Afternoon;
+            int reqShiftEvening = department.ShiftPerDept.RequiredEmployees.AllDays[j].Evening;
 
 
-            if (fillShiftMorning < fillShiftAfternoon && fillShiftMorning<reqShiftMorning)
+            if (fillShiftMorning < reqShiftMorning)
                 lowest = 0;
-            else if (fillShiftAfternoon <= fillShiftEvening && lowest != 0 && fillShiftAfternoon<reqShiftAfternoon)
+            else if (fillShiftAfternoon < reqShiftAfternoon)
                 lowest = 1;
-            else if(fillShiftEvening<reqShiftEvening)
-                lowest= 2;
+            else if (fillShiftEvening < reqShiftEvening)
+                lowest = 2;
 
             return lowest;
         }
@@ -58,10 +58,10 @@ namespace Hardware_App.Admin.Schedule.ScheduleAlgorithm
 
                 foreach (Department department in departmentManager.Departments)
                 {
-                   
-                    
-                        foreach (Employee employee in employeeManager.GetEmployees())
-                        {
+
+
+                    foreach (Employee employee in employeeManager.GetEmployees())
+                    {
                         for (int two = 0; two < 2; two++)
                         {
                             int k = ChooseShift(j, department);
@@ -77,7 +77,7 @@ namespace Hardware_App.Admin.Schedule.ScheduleAlgorithm
 
                             if (employee.Department == department.Name)
                             {
-                                
+
                                 bool Ok = true;
                                 foreach (IConstraintStrategy constraint in allConstraints)
                                 {

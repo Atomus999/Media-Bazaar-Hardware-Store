@@ -15,7 +15,7 @@ namespace Hardware_App
 
         public DatabaseHelperDepartment()
         {
-            string info = "Server = studmysql01.fhict.local; Uid = dbi426239; Database = dbi426239; Pwd = 1234;";
+            string info = "Server = localhost; Uid = root; Database = mediabazaar; Pwd = 1234;";
             connection = new MySqlConnection(info);
         }
 
@@ -35,7 +35,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -57,7 +57,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -199,7 +199,7 @@ namespace Hardware_App
                 }
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -230,7 +230,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -249,13 +249,13 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@pid", department.Id);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
             }
             return recordsChanged;
         }
-       
+
     }
 }

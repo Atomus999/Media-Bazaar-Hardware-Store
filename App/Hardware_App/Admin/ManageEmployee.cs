@@ -488,7 +488,7 @@ namespace Hardware_App
                     {
 
                         if (!checkWorkDay(dateSelected, employee))
-                            MessageBox.Show("Employee does not wish to work that day"); 
+                            MessageBox.Show("Employee does not wish to work that day");
                         if (employee.WeeklyActualFTE(dateSelected) >= employee.FteContract)
                         {
                             MessageBox.Show("Fte exceeds employee contract for this week");
@@ -631,7 +631,7 @@ namespace Hardware_App
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex) { throw ex; }
                 try
                 {
                     if (lbAfternoonSchedule.SelectedItem.ToString() == employee.FirstName + " " + employee.LastName)
@@ -648,7 +648,7 @@ namespace Hardware_App
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex) { throw ex; }
                 try
                 {
                     if (lbEveningSchedule.SelectedItem.ToString() == employee.FirstName + " " + employee.LastName)
@@ -665,7 +665,7 @@ namespace Hardware_App
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex) { throw ex; }
             }
             UpdateSchedules();
         }
@@ -1384,10 +1384,7 @@ namespace Hardware_App
                 cbCategoryProducts.DataSource = depotStatistics.selectedCategoryProducts(cbCategory.SelectedItem.ToString());
                 refreshBarChart();
             }
-            catch (NullReferenceException)
-            {
-
-            }
+            catch { }
 
         }
 
@@ -1443,10 +1440,7 @@ namespace Hardware_App
 
                 lblNumberOfEmployeesPerDepartments.Text = description;
             }
-            catch (NullReferenceException)
-            {
-
-            }
+            catch (Exception ex) { throw ex; }
             refreshAllEmpDataGridView();
         }
 
@@ -1513,7 +1507,7 @@ namespace Hardware_App
         }
         #endregion
 
-       
+
 
         private void BtnAutoNormalSchedule_Click(object sender, EventArgs e)
         {
@@ -1525,7 +1519,7 @@ namespace Hardware_App
                 if (chkRespectDays.Checked)
                     respectDesiredDays = true;
                 else
-                    respectDesiredDays=false;
+                    respectDesiredDays = false;
                 BaseScheduling baseScheduling = new BaseScheduling(new List<IConstraintStrategy>() { new FteConstraint(fteConstraint), new WorkdayConstraint(respectDesiredDays) });
                 baseScheduling.AssignEmployees();
             }

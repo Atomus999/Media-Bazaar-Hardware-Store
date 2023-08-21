@@ -13,22 +13,22 @@ namespace Hardware_App.Admin
         {
             double turnoverPrice = 0.00;
             int quantitySold = 0;
-            
-            foreach(Ticket t in ticketManager.getAllTickets())
+
+            foreach (Ticket t in ticketManager.getAllTickets())
             {
                 if (t.product.Id == product.Id)
                 {
-                    if(t.CurrentState == state.Accepted)
-                    quantitySold += t.Quantity;
+                    if (t.CurrentState == state.Accepted)
+                        quantitySold += t.Quantity;
                 }
             }
             turnoverPrice = quantitySold * product.Price;
             return turnoverPrice;
-            
+
         }
-        public List<Product> selectedCategoryProducts (string category) //If the category matches from CB add matching products in the List
+        public List<Product> selectedCategoryProducts(string category) //If the category matches from CB add matching products in the List
         {
-            List<Product> items = new List<Product>() ; 
+            List<Product> items = new List<Product>();
             foreach (Product product in Product_Manager.GetInstance().GetProductList())
             {
                 if (product.Category == category)
@@ -36,12 +36,12 @@ namespace Hardware_App.Admin
                     items.Add(product);
 
                 }
-                
+
             }
             return items;
 
         }
-        
+
 
         public Product getPersonById(int id)
         {
@@ -66,10 +66,7 @@ namespace Hardware_App.Admin
                     productNumber++;
                 }
             }
-            if (productNumber == 0)
-            {
-                throw new Exception("There is no products");
-            }
+
             return productNumber;
         }
 

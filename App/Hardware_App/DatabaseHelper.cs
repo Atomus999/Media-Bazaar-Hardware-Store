@@ -41,7 +41,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@evening", dayPlan.Evening);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -79,7 +79,7 @@ namespace Hardware_App
                 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -103,7 +103,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -143,7 +143,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@evening", dayPlan.Evening);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -177,7 +177,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+             catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -296,7 +296,7 @@ namespace Hardware_App
                     command.Parameters.AddWithValue("@isactive",employee.IsActive);
                     recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -336,7 +336,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -417,7 +417,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@pid", p.Id);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -466,10 +466,7 @@ namespace Hardware_App
                 sqlCommand.Parameters.AddWithValue("@date", ticket.TicketDate);
                 rowsAffected += sqlCommand.ExecuteNonQuery();
             }
-            catch
-            {
-                return 0;
-            }
+            catch (Exception ex) { throw ex; }
             
             finally
             {
@@ -491,11 +488,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@Id", ticket.Id);
                 rowsAffected += command.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                
-                return 0;
-            }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();

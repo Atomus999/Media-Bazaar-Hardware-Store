@@ -15,7 +15,7 @@ namespace Hardware_App
 
         public DatabaseHelperEmployee()
         {
-            string info = "Server = studmysql01.fhict.local; Uid = dbi426239; Database = dbi426239; Pwd = 1234;";
+            string info = "Server = localhost; Uid = root; Database = mediabazaar; Pwd = 1234;";
             connection = new MySqlConnection(info);
         }
 
@@ -42,7 +42,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -115,7 +115,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@sunday", employee.ScheduleDays.Sunday);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -168,7 +168,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -191,7 +191,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -233,7 +233,7 @@ namespace Hardware_App
             finally { connection.Close(); }
         }
 
-        public int RemoveFte(DateTime date,int id)
+        public int RemoveFte(DateTime date, int id)
         {
             int recordsChanged = 0;
             string sql = "DELETE FROM `ftetracker` WHERE `Emp_ID`=@empid AND `Date`=@date limit 1";
@@ -243,10 +243,10 @@ namespace Hardware_App
                 connection.Open();
                 command.Parameters.AddWithValue("@empid", id);
                 command.Parameters.AddWithValue("@date", date);
-                
+
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -268,7 +268,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@evening", dayPlan.Evening);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -326,7 +326,6 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@evening", dayPlan.Evening);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
             finally
             {
                 connection.Close();
@@ -374,7 +373,7 @@ namespace Hardware_App
 
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -424,7 +423,7 @@ namespace Hardware_App
                     isActive = Convert.ToBoolean(reader["IsActive"]);
                     fteContract = Convert.ToDouble(reader["ContractFTE"]);
                     spouse = reader["Spouse"].ToString();
-                    if(spouse == "")
+                    if (spouse == "")
                     {
                         employees.Add(new Employee(id, firstName, lastName, department, dateOfBirth, bsn, phoneNumber, address, email, userName, password, rFIDcontrol, isActive, fteContract));
                     }
@@ -432,11 +431,11 @@ namespace Hardware_App
                     {
                         foreach (Spouse spo in spouses)
                         {
-                            if(id == spo.EmpID)
-                            employees.Add(new Employee(id, firstName, lastName, department, dateOfBirth, bsn, phoneNumber, address, email, userName, password, rFIDcontrol, isActive, fteContract, spo));
+                            if (id == spo.EmpID)
+                                employees.Add(new Employee(id, firstName, lastName, department, dateOfBirth, bsn, phoneNumber, address, email, userName, password, rFIDcontrol, isActive, fteContract, spo));
                         }
                     }
-                    
+
                 }
                 return employees;
             }
@@ -481,7 +480,7 @@ namespace Hardware_App
                 }
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -503,7 +502,7 @@ namespace Hardware_App
                 string absenceReason;
                 string absenceDescription;
                 string ticketStatus;
-                string EmployeeName="";
+                string EmployeeName = "";
                 string absenceTime = "";
                 List<EmployeeAbsence> absences = new List<EmployeeAbsence>();
                 while (reader.Read())
@@ -515,11 +514,11 @@ namespace Hardware_App
                     absenceDescription = reader["AbsenceDescription"].ToString();
                     ticketStatus = reader["TicketStatus"].ToString();
                     absenceTime = reader["AbsenceTime"].ToString();
-                    foreach(Employee employee in employees)
+                    foreach (Employee employee in employees)
                     {
-                        if(empId == employee.Id)
+                        if (empId == employee.Id)
                         {
-                            EmployeeName = employee.FirstName+" "+employee.LastName;
+                            EmployeeName = employee.FirstName + " " + employee.LastName;
                         }
                     }
                     EmployeeAbsence employeeAbsence = new EmployeeAbsence(id, empId, date, absenceReason, absenceDescription, ticketStatus);

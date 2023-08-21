@@ -80,7 +80,7 @@ namespace Hardware_App
 
                         dataTableModelTickets.Add(tModel);
                     }
-                    catch { };
+                    catch (Exception ex) { throw ex; }
                 }
 
             }
@@ -100,7 +100,7 @@ namespace Hardware_App
                         DataTableModelTicket tModel = new DataTableModelTicket(t.Id, t.Quantity, t.product.Barcode, t.CurrentState, t.TicketDate, t.product.Name);
                         dataTableModelTickets.Add(tModel);
                     }
-                    catch { }
+                    catch (Exception ex) { throw ex; }
                     }
 
                 }

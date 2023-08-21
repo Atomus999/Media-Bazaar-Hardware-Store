@@ -18,11 +18,11 @@ namespace Hardware_App
         public ScheduleOverview(DateTime dateTime)
         {
             InitializeComponent();
-           lbEmployees.DrawMode = DrawMode.OwnerDrawVariable;            
+            lbEmployees.DrawMode = DrawMode.OwnerDrawVariable;
             lbEmployees.DrawItem += new DrawItemEventHandler(lbEmployees_draw);
 
             lbDay1.DrawMode = DrawMode.OwnerDrawVariable;
-            lbDay1.DrawItem+= new DrawItemEventHandler(lbDay1_draw);
+            lbDay1.DrawItem += new DrawItemEventHandler(lbDay1_draw);
             lbDay2.DrawMode = DrawMode.OwnerDrawVariable;
             lbDay2.DrawItem += new DrawItemEventHandler(lbDay2_draw);
             lbDay3.DrawMode = DrawMode.OwnerDrawVariable;
@@ -53,10 +53,10 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
-                
+                Console.WriteLine("draw not possible 1");
+
             }
         }
         private void lbDay2_draw(object sender, DrawItemEventArgs e)
@@ -70,9 +70,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 2");
             }
         }
         private void lbDay3_draw(object sender, DrawItemEventArgs e)
@@ -86,9 +86,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 3");
             }
         }
         private void lbDay4_draw(object sender, DrawItemEventArgs e)
@@ -102,9 +102,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 4");
             }
         }
         private void lbDay5_draw(object sender, DrawItemEventArgs e)
@@ -118,9 +118,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 5");
             }
         }
         private void lbDay6_draw(object sender, DrawItemEventArgs e)
@@ -134,9 +134,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 6");
             }
         }
         private void lbDay7_draw(object sender, DrawItemEventArgs e)
@@ -150,9 +150,9 @@ namespace Hardware_App
 
                 e.DrawFocusRectangle();
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible 7");
             }
         }
         public void setIndexes(DateTime dateTime)
@@ -226,7 +226,7 @@ namespace Hardware_App
             }
             catch
             {
-                Console.WriteLine("draw not possible");
+                Console.WriteLine("draw not possible employee");
             }
         }
         public void setDays(DateTime dateTime, int j)
@@ -294,7 +294,8 @@ namespace Hardware_App
             {
                 ListBox listBox;
                 switch (i)
-                { case 0:
+                {
+                    case 0:
                         listBox = lbDay1;
                         break;
                     case 1:
@@ -327,14 +328,14 @@ namespace Hardware_App
                     bool checker = true;
                     if (!checkWorkDay(date.AddDays(i + counter), employee))
                         checker = false;
-                    List<DayPlan> dayPlans = employee.GetDayPlansByDate(dateTime.AddDays(i+counter));
-                    int morning=0;
-                    int afternoon=0;
-                    int evening=0;
+                    List<DayPlan> dayPlans = employee.GetDayPlansByDate(dateTime.AddDays(i + counter));
+                    int morning = 0;
+                    int afternoon = 0;
+                    int evening = 0;
 
                     foreach (DayPlan plan in dayPlans)
                     {
-                        if (plan.Morning !=0)
+                        if (plan.Morning != 0)
                             morning = 1;
                         if (plan.Afternoon != 0)
                             afternoon = 1;
@@ -353,7 +354,7 @@ namespace Hardware_App
             UpdateShiftPerDepPerDay();
         }
 
-        private void CalculateShifts(int morning, int afternoon, int evening, DateTime dateTime,string dep)
+        private void CalculateShifts(int morning, int afternoon, int evening, DateTime dateTime, string dep)
         {
             foreach (Department department in DepartmentManager.GetInstance().Departments)
             {
@@ -364,9 +365,9 @@ namespace Hardware_App
                         case DayOfWeek.Sunday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Sunday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Sunday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Sunday.Evening++;
                             break;
                         case DayOfWeek.Monday:
@@ -374,47 +375,47 @@ namespace Hardware_App
                                 department.ShiftPerDept.FilledEmployees.Monday.Morning++;
                             if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Monday.Afternoon++;
-                            if (evening==1)
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Monday.Evening++;
                             break;
                         case DayOfWeek.Tuesday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Tuesday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Tuesday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Tuesday.Evening++;
                             break;
                         case DayOfWeek.Wednesday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Wednesday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Wednesday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Wednesday.Evening++;
                             break;
                         case DayOfWeek.Thursday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Thursday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Thursday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Thursday.Evening++;
                             break;
                         case DayOfWeek.Friday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Friday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Friday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Friday.Evening++;
                             break;
                         case DayOfWeek.Saturday:
                             if (morning == 1)
                                 department.ShiftPerDept.FilledEmployees.Saturday.Morning++;
-                            if (afternoon == 1)               
+                            if (afternoon == 1)
                                 department.ShiftPerDept.FilledEmployees.Saturday.Afternoon++;
-                            if (evening == 1)                 
+                            if (evening == 1)
                                 department.ShiftPerDept.FilledEmployees.Saturday.Evening++;
                             break;
                         default:
@@ -438,19 +439,19 @@ namespace Hardware_App
                 case DayOfWeek.Monday:
                     if (!employee.ScheduleDays.Monday)
                     {
-                         ok = false;
+                        ok = false;
                     }
                     break;
                 case DayOfWeek.Tuesday:
                     if (!employee.ScheduleDays.Tuesday)
                     {
-                         ok = false;
+                        ok = false;
                     }
                     break;
                 case DayOfWeek.Wednesday:
                     if (!employee.ScheduleDays.Wednesday)
                     {
-                         ok = false;
+                        ok = false;
                     }
                     break;
                 case DayOfWeek.Thursday:
@@ -468,7 +469,7 @@ namespace Hardware_App
                 case DayOfWeek.Saturday:
                     if (!employee.ScheduleDays.Saturday)
                     {
-                         ok = false;
+                        ok = false;
                     }
                     break;
                 default:
@@ -476,7 +477,7 @@ namespace Hardware_App
             }
             return ok;
         }
-        public void addToListbox2(int morning,int afternoon,int evening, ListBox listBox,bool checker)
+        public void addToListbox2(int morning, int afternoon, int evening, ListBox listBox, bool checker)
         {
             if (morning != 0 && afternoon != 0)
                 listBox.Items.Add("M,A,0");
@@ -525,7 +526,7 @@ namespace Hardware_App
 
                     lblSunShft.Text = $"{department.ShiftPerDept.RequiredEmployees.Sunday.Morning},{department.ShiftPerDept.RequiredEmployees.Sunday.Afternoon},{department.ShiftPerDept.RequiredEmployees.Sunday.Evening}";
                     lblSunShftFill.Text = $"{department.ShiftPerDept.FilledEmployees.Sunday.Morning},{department.ShiftPerDept.FilledEmployees.Sunday.Afternoon},{department.ShiftPerDept.FilledEmployees.Sunday.Evening}";
-                    if (!string.Equals(lblMonShft.Text, lblMonShftFill.Text))                        
+                    if (!string.Equals(lblMonShft.Text, lblMonShftFill.Text))
                         lblMonShftFill.ForeColor = Color.Red;
                     else
                         lblMonShftFill.ForeColor = Color.Black;
@@ -570,14 +571,14 @@ namespace Hardware_App
             showEmpByDate(date);
         }
 
-        private void AddSchedule(DateTime dateSelected,Employee employeeSelected,string shift)
+        private void AddSchedule(DateTime dateSelected, Employee employeeSelected, string shift)
         {
             lblError.Text = "";
             lblError2.Text = "";
             try
-            {                
+            {
                 bool ok = true;
-                
+
                 foreach (Employee employee in EmployeeManager.GetInstance().GetEmployees())
                 {
                     if (employee == employeeSelected)
@@ -653,9 +654,9 @@ namespace Hardware_App
                                 break;
 
                         }
-                        
+
                     }
-                }                
+                }
             }
             catch (System.NullReferenceException ex)
             {
@@ -684,7 +685,7 @@ namespace Hardware_App
         private Employee returnSelectedEmployee()
         {
             try
-            {                
+            {
                 string tempEmpName = lbEmployees.SelectedItem.ToString();
                 string[] name = tempEmpName.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
 
@@ -693,7 +694,7 @@ namespace Hardware_App
                     if (employee.FirstName == name[0] && employee.LastName == name[1])
                         return employee;
                 }
-            } 
+            }
             catch { MessageBox.Show("Please select employee"); }
             return null;
         }

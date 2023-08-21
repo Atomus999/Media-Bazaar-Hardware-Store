@@ -16,7 +16,7 @@ namespace Hardware_App
 
         public DatabaseHelperSpouse()
         {
-            string info = "Server = studmysql01.fhict.local; Uid = dbi426239; Database = dbi426239; Pwd = 1234;";
+            string info = "Server = localhost; Uid = root; Database = mediabazaar; Pwd = 1234;";
             connection = new MySqlConnection(info);
         }
 
@@ -46,6 +46,7 @@ namespace Hardware_App
                 }
                 return spouses;
             }
+
             finally { connection.Close(); }
         }
 
@@ -65,7 +66,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@phonenumber", spouse.PhoneNumber);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();
@@ -88,7 +89,7 @@ namespace Hardware_App
                 command.Parameters.AddWithValue("@phonenumber", spouse.PhoneNumber);
                 recordsChanged += command.ExecuteNonQuery();
             }
-            catch { return 0; }
+            catch (Exception ex) { throw ex; }
             finally
             {
                 connection.Close();

@@ -13,7 +13,7 @@ namespace Hardware_App
 
         public DatabaseHelperTicket()
         {
-            string info = "Server = studmysql01.fhict.local; Uid = dbi426239; Database = dbi426239; Pwd = 1234;";
+            string info = "Server = localhost; Uid = root; Database = mediabazaar; Pwd = 1234;";
             connection = new MySqlConnection(info);
         }
 
